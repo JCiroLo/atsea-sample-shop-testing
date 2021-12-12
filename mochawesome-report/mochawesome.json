@@ -1,0 +1,262 @@
+{
+  "stats": {
+    "suites": 4,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2021-12-12T19:46:19.661Z",
+    "end": "2021-12-12T19:46:19.778Z",
+    "duration": 117,
+    "testsRegistered": 3,
+    "passPercent": 33.33333333333333,
+    "pendingPercent": 0,
+    "other": 2,
+    "hasOther": true,
+    "skipped": 2,
+    "hasSkipped": true
+  },
+  "results": [
+    {
+      "uuid": "1fe0d95a-bfd1-400c-b622-d99a527c1bd3",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "4ff5dbc1-a9cd-43aa-9ed6-a5392102c508",
+          "title": "User Request: User Request from API",
+          "fullFile": "/home/felipe/atsea-sample-shop-testing/atsea-sample-shop-testing/dist/test/api/api.userRequest.test.js",
+          "file": "/dist/test/api/api.userRequest.test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "67dcf3b0-ae06-4f55-a85f-dcdcdea80f10",
+              "title": "User Request: Register user",
+              "fullFile": "/home/felipe/atsea-sample-shop-testing/atsea-sample-shop-testing/dist/test/api/api.userRequest.test.js",
+              "file": "/dist/test/api/api.userRequest.test.js",
+              "beforeHooks": [
+                {
+                  "title": "\"before all\" hook in \"User Request: Register user\"",
+                  "fullTitle": "User Request: User Request from API User Request: Register user \"before all\" hook in \"User Request: Register user\"",
+                  "timedOut": false,
+                  "duration": 46,
+                  "state": null,
+                  "speed": null,
+                  "pass": false,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "__awaiter(void 0, void 0, void 0, function* () {\n            response = yield (0, superagent_1.post)(`${API_URL}/${API_ENDPOINT}/`)\n                .set('Content-Type', 'application/json')\n                .accept('application/json')\n                .send(user1);\n        })",
+                  "err": {},
+                  "uuid": "a866e078-9ea2-44aa-b9f7-34803e1f074f",
+                  "parentUUID": "67dcf3b0-ae06-4f55-a85f-dcdcdea80f10",
+                  "isHook": true,
+                  "skipped": false
+                }
+              ],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "User Request: The customer's being created",
+                  "fullTitle": "User Request: User Request from API User Request: Register user User Request: The customer's being created",
+                  "timedOut": false,
+                  "duration": 1,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "(0, chai_1.expect)(response.status).to.equal(http_status_codes_1.StatusCodes.CREATED);",
+                  "err": {},
+                  "uuid": "124e2273-6fbf-4c85-a38a-70dc5ac6564f",
+                  "parentUUID": "67dcf3b0-ae06-4f55-a85f-dcdcdea80f10",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "124e2273-6fbf-4c85-a38a-70dc5ac6564f"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 1,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 5000
+            },
+            {
+              "uuid": "971f2c98-a0fd-45b2-ab5c-66e85551cc16",
+              "title": "User Request: Register user with existing email",
+              "fullFile": "/home/felipe/atsea-sample-shop-testing/atsea-sample-shop-testing/dist/test/api/api.userRequest.test.js",
+              "file": "/dist/test/api/api.userRequest.test.js",
+              "beforeHooks": [
+                {
+                  "title": "\"before all\" hook for \"User Request: The customer's not being created\"",
+                  "fullTitle": "User Request: User Request from API User Request: Register user with existing email \"before all\" hook for \"User Request: The customer's not being created\"",
+                  "timedOut": false,
+                  "duration": 32,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "__awaiter(void 0, void 0, void 0, function* () {\n            response = yield (0, superagent_1.post)(`${API_URL}/${API_ENDPOINT}/`)\n                .set('Content-Type', 'application/json')\n                .accept('application/json')\n                .send(user2);\n        })",
+                  "err": {
+                    "message": "Error: Conflict",
+                    "estack": "Error: Conflict\n    at Request.callback (node_modules/superagent/lib/node/index.js:883:15)\n    at /home/felipe/atsea-sample-shop-testing/atsea-sample-shop-testing/node_modules/superagent/lib/node/index.js:1127:20\n    at IncomingMessage.<anonymous> (node_modules/superagent/lib/node/parsers/json.js:22:7)\n    at endReadableNT (internal/streams/readable.js:1327:12)\n    at processTicksAndRejections (internal/process/task_queues.js:80:21)",
+                    "diff": null
+                  },
+                  "uuid": "9d4058e5-a575-471b-893a-c68abb2dac42",
+                  "parentUUID": "971f2c98-a0fd-45b2-ab5c-66e85551cc16",
+                  "isHook": true,
+                  "skipped": false
+                }
+              ],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "User Request: The customer's not being created",
+                  "fullTitle": "User Request: User Request from API User Request: Register user with existing email User Request: The customer's not being created",
+                  "timedOut": false,
+                  "duration": 0,
+                  "state": null,
+                  "speed": null,
+                  "pass": false,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "(0, chai_1.expect)(response.status).to.equal(http_status_codes_1.StatusCodes.NOT_FOUND);",
+                  "err": {},
+                  "uuid": "b8802995-248a-497a-8c3c-47839bb590e6",
+                  "parentUUID": "971f2c98-a0fd-45b2-ab5c-66e85551cc16",
+                  "isHook": false,
+                  "skipped": true
+                }
+              ],
+              "suites": [],
+              "passes": [],
+              "failures": [],
+              "pending": [],
+              "skipped": [
+                "b8802995-248a-497a-8c3c-47839bb590e6"
+              ],
+              "duration": 0,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 5000
+            },
+            {
+              "uuid": "24d232d0-9496-47ea-bdbe-d98225c6742b",
+              "title": "User Request: Get customer",
+              "fullFile": "/home/felipe/atsea-sample-shop-testing/atsea-sample-shop-testing/dist/test/api/api.userRequest.test.js",
+              "file": "/dist/test/api/api.userRequest.test.js",
+              "beforeHooks": [
+                {
+                  "title": "\"before all\" hook for \"User Request: The customer's being obtained\"",
+                  "fullTitle": "User Request: User Request from API User Request: Get customer \"before all\" hook for \"User Request: The customer's being obtained\"",
+                  "timedOut": false,
+                  "duration": 14,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "__awaiter(void 0, void 0, void 0, function* () {\n            response = yield (0, superagent_1.get)(`${API_URL}/${API_ENDPOINT}/${user1.customerId}`).set('User-Agent', 'agent');\n        })",
+                  "err": {
+                    "message": "Error: Not Found",
+                    "estack": "Error: Not Found\n    at Request.callback (node_modules/superagent/lib/node/index.js:883:15)\n    at /home/felipe/atsea-sample-shop-testing/atsea-sample-shop-testing/node_modules/superagent/lib/node/index.js:1127:20\n    at IncomingMessage.<anonymous> (node_modules/superagent/lib/node/parsers/json.js:22:7)\n    at endReadableNT (internal/streams/readable.js:1327:12)\n    at processTicksAndRejections (internal/process/task_queues.js:80:21)",
+                    "diff": null
+                  },
+                  "uuid": "989921b7-54cf-483b-975e-a472784b4157",
+                  "parentUUID": "24d232d0-9496-47ea-bdbe-d98225c6742b",
+                  "isHook": true,
+                  "skipped": false
+                }
+              ],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "User Request: The customer's being obtained",
+                  "fullTitle": "User Request: User Request from API User Request: Get customer User Request: The customer's being obtained",
+                  "timedOut": false,
+                  "duration": 0,
+                  "state": null,
+                  "speed": null,
+                  "pass": false,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "(0, chai_1.expect)(response.status).to.equal(http_status_codes_1.StatusCodes.OK);\n(0, chai_1.expect)(response.body.email).to.equal(user1.email);\n(0, chai_1.expect)(response.body.username).to.equal(user1.username);\n(0, chai_1.expect)(response.body.customerIf).to.equal(user1.customerId); // PUEDE QUE HAYA ERROR",
+                  "err": {},
+                  "uuid": "a01a6fe1-eb34-4057-b7d2-ac379813ed70",
+                  "parentUUID": "24d232d0-9496-47ea-bdbe-d98225c6742b",
+                  "isHook": false,
+                  "skipped": true
+                }
+              ],
+              "suites": [],
+              "passes": [],
+              "failures": [],
+              "pending": [],
+              "skipped": [
+                "a01a6fe1-eb34-4057-b7d2-ac379813ed70"
+              ],
+              "duration": 0,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 5000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 5000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 5000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "8.4.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.3.1"
+    },
+    "marge": {
+      "options": null,
+      "version": "5.2.0"
+    }
+  }
+}

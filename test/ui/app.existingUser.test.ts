@@ -1,4 +1,4 @@
-import { browser } from 'protractor'
+/* import { browser } from 'protractor'
 import { post } from 'superagent'
 import { StatusCodes } from 'http-status-codes'
 import * as chai from 'chai'
@@ -33,5 +33,5 @@ describe('Register user', () => {
     expect(response.status).to.equal(StatusCodes.CREATED)
     expect(response.body.customerIf).to.equal(user.customerId)
   })
-})
+}) */
 

@@ -3,39 +3,63 @@ import { StatusCodes } from 'http-status-codes'
 import { expect } from 'chai'
 // import describers from '../describers.json'
 
-const API_URL = process.env.HOST_URL
+const API_URL = 'http://localhost:8080'
 const API_ENDPOINT = 'api/customer'
 let response = null
 
-const user1 = {
-  address: 'California bellair LA',
-  email: 'willEsMid@gmail.com',
-  name: 'Will Smith',
+/* const user1 = {
+  address: 'Magicland',
+  email: 'rcll@gmail.com',
+  name: 'Remy Caja Llena',
   password: 'password',
-  phone: '+1 7872370921',
-  username: 'WSMth',
-  customerId: 3827,
+  phone: '+1 7572540321',
+  username: 'remy_dollar',
+  customerId: 2343,
   enabled: 'true',
   role: 'user'
+} */
+
+const user1 = {
+  address: "144 Townsend Street",
+  email: "test@gmail.com",
+  name: "Jess",
+  password: '3',
+  phone: "9999999999",
+  username: '3',
+  customerId: 0,
+  enabled: "true",
+  role: "user"
 }
 
-const user2 = {
-  address: 'California bellair LA',
-  email: 'willEsMid@gmail.com',
-  name: 'Will Smith Official',
+/* const user2 = {
+  address: 'Magicland',
+  email: 'rcll@gmail.com',
+  name: 'Remy Caja Llena',
   password: 'password',
-  phone: '+1 7872370921',
-  username: 'WSMthOfficial',
-  customerId: 4829,
+  phone: '+1 7572540321',
+  username: 'remy_dollar',
+  customerId: 2343,
   enabled: 'true',
   role: 'user'
+} */
+
+const user2 = {
+  address: "144 Townsend Street",
+  email: "test@gmail.com",
+  name: "Jess",
+  password: '3',
+  phone: "9999999999",
+  username: '3',
+  customerId: 0,
+  enabled: "true",
+  role: "user"
 }
 
 describe('User Request: User Request from API', () => {
   describe('User Request: Register user', () => {
     before(async () => {
       response = await post(`${API_URL}/${API_ENDPOINT}/`)
-        .set('Content-Type', 'application/json')
+        .set('User-Agent', 'agent')
         .accept('application/json')
         .send(user1)
     })
@@ -46,12 +70,12 @@ describe('User Request: User Request from API', () => {
   describe('User Request: Register user with existing email', () => {
     before(async () => {
       response = await post(`${API_URL}/${API_ENDPOINT}/`)
-        .set('Content-Type', 'application/json')
+        .set('User-Agent', 'agent')
         .accept('application/json')
         .send(user2)
     })
     it("User Request: The customer's not being created", () => {
-      expect(response.status).to.equal(StatusCodes.CONFLICT)
+      expect(response.status).to.equal(StatusCodes.NOT_FOUND)
     })
   })
   describe('User Request: Get customer', () => {
