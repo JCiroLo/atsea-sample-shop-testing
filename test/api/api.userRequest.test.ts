@@ -7,53 +7,19 @@ const API_URL = 'http://localhost:8080'
 const API_ENDPOINT = 'api/customer'
 let response = null
 
-/* const user1 = {
-  address: 'Magicland',
-  email: 'rcll@gmail.com',
-  name: 'Remy Caja Llena',
-  password: 'password',
-  phone: '+1 7572540321',
-  username: 'remy_dollar',
-  customerId: 2343,
-  enabled: 'true',
-  role: 'user'
-} */
-
-const user1 = {
+const user = {
   address: "144 Townsend Street",
   email: "test@gmail.com",
   name: "Jess",
-  password: '3',
+  password: (new Date().getTime()).toString(),
   phone: "9999999999",
-  username: '3',
+  username: (new Date().getTime()).toString(),
   customerId: 0,
   enabled: "true",
   role: "user"
 }
 
-/* const user2 = {
-  address: 'Magicland',
-  email: 'rcll@gmail.com',
-  name: 'Remy Caja Llena',
-  password: 'password',
-  phone: '+1 7572540321',
-  username: 'remy_dollar',
-  customerId: 2343,
-  enabled: 'true',
-  role: 'user'
-} */
-
-const user2 = {
-  address: "144 Townsend Street",
-  email: "test@gmail.com",
-  name: "Jess",
-  password: '3',
-  phone: "9999999999",
-  username: '3',
-  customerId: 0,
-  enabled: "true",
-  role: "user"
-}
+let userResponseId = null
 
 describe('User Request: User Request from API', () => {
   describe('User Request: Register user', () => {
@@ -61,7 +27,8 @@ describe('User Request: User Request from API', () => {
       response = await post(`${API_URL}/${API_ENDPOINT}/`)
         .set('User-Agent', 'agent')
         .accept('application/json')
-        .send(user1)
+        .send(user)
+      userResponseId = response.body.customerId
     })
     it("User Request: The customer's being created", () => {
       expect(response.status).to.equal(StatusCodes.CREATED)
@@ -69,26 +36,30 @@ describe('User Request: User Request from API', () => {
   })
   describe('User Request: Register user with existing email', () => {
     before(async () => {
-      response = await post(`${API_URL}/${API_ENDPOINT}/`)
+      try {
+        response = await post(`${API_URL}/${API_ENDPOINT}/`)
         .set('User-Agent', 'agent')
         .accept('application/json')
-        .send(user2)
+        .send(user)
+      } catch (e) {
+        response = e
+      }
     })
     it("User Request: The customer's not being created", () => {
-      expect(response.status).to.equal(StatusCodes.NOT_FOUND)
+      expect(response.status).to.equal(StatusCodes.CONFLICT)
     })
   })
   describe('User Request: Get customer', () => {
     before(async () => {
       response = await get(
-        `${API_URL}/${API_ENDPOINT}/${user1.customerId}`
+        `${API_URL}/${API_ENDPOINT}/${userResponseId}`
       ).set('User-Agent', 'agent')
     })
     it("User Request: The customer's being obtained", () => {
       expect(response.status).to.equal(StatusCodes.OK)
-      expect(response.body.email).to.equal(user1.email)
-      expect(response.body.username).to.equal(user1.username)
-      expect(response.body.customerIf).to.equal(user1.customerId) // PUEDE QUE HAYA ERROR
+      expect(response.body.email).to.equal(user.email)
+      expect(response.body.username).to.equal(user.username)
+      expect(response.body.customerIf).to.equal(userResponseId) // PUEDE QUE HAYA ERROR
     })
   })
 })

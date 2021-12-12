@@ -1,8 +1,8 @@
-/* import { get } from 'superagent';
+import { get } from 'superagent';
 import { StatusCodes } from 'http-status-codes';
 import { expect } from 'chai';
 
-const host = process.env.HOST_URL
+const host = 'http://localhost:8080'
 let response = null;
 let product = null;
 
@@ -29,4 +29,4 @@ describe('Product Request: Atsea Product Request from API', () => {
       expect(product.description).to.equal('For those with a cute little whale');
     });
   });
-}); */
+});
