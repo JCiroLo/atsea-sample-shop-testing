@@ -1,8 +1,8 @@
-import { get, post, del } from 'superagent'
+import { get, post, del, put } from 'superagent'
 import { StatusCodes } from 'http-status-codes'
 import { expect } from 'chai'
 
-const host = `http://localhost:8080`
+const API_URL = `http://localhost:8080`
 let response = null
 
 // Initial validation to be able to create orders
@@ -21,7 +21,7 @@ let userRegistry = {
 
 describe('Setup customer user', () => {
   before(async () => {
-    response = await post(`${host}/api/customer/`)
+    response = await post(`${API_URL}/api/customer/`)
       .set('User-Agent', 'agent')
       .accept('application/json')
       .send(userRegistry)
@@ -40,17 +40,25 @@ let order = {
   productsOrdered: { 1: 1, 2: 2, 3: 3 }
 }
 
+let orderToUpdate = {
+  orderId: 0,
+  productsOrdered: { 1: 2, 2: 2, 3: 2 },
+  orderDate: new Date().toISOString(),
+  customerId
+}
+
 describe('Order Request: Order Request from API', () => {
   let orderId = null
   // Create order endpoint
   describe('Order Request: Create order', () => {
     before(async () => {
-      response = await post(`${host}/api/order/`)
+      response = await post(`${API_URL}/api/order/`)
         .set('User-Agent', 'agent')
         .accept('application/json')
         .send(order)
       orderId = response.body.orderId
       order.orderId = orderId
+      orderToUpdate.orderId = orderId
     })
     it("Order Request: The order's being created", () => {
       expect(response.status).to.equal(StatusCodes.CREATED)
@@ -59,7 +67,7 @@ describe('Order Request: Order Request from API', () => {
   // Get all orders endpoint
   describe('Order Request: Get all orders', () => {
     before(async () => {
-      response = await get(`${host}/api/order/`).set('User-Agent', 'agent')
+      response = await get(`${API_URL}/api/order/`).set('User-Agent', 'agent')
     })
     it('Order Request: All the orders are being obtained', () => {
       expect(response.status).to.equal(StatusCodes.OK)
@@ -68,7 +76,7 @@ describe('Order Request: Order Request from API', () => {
   // Get order by id endpoint
   describe('Order Request: Get order by ID', () => {
     before(async () => {
-      response = await get(`${host}/api/order/${orderId}`)
+      response = await get(`${API_URL}/api/order/${orderId}`)
         .set('User-Agent', 'agent')
         .accept('application/json')
     })
@@ -84,15 +92,10 @@ describe('Order Request: Order Request from API', () => {
   // Update order endpoint
   describe("Order Request: Update order", () => {
     before(async () => {
-      response = await post(`${host}/api/order/${orderId}`)
+      response = await put(`${API_URL}/api/order/${orderId}`)
         .set('User-Agent', 'agent')
         .accept('application/json')
-        .send({
-          orderId,
-          productsOrdered: { '3': 2, '6': 3, '11': 2 },
-          orderDate: new Date().toISOString(),
-          customerId
-        })
+        .send(orderToUpdate)
     })
     it("Order Request: The order's being updated", () => {
       expect(response.status).to.equal(StatusCodes.OK)
@@ -101,13 +104,13 @@ describe('Order Request: Order Request from API', () => {
   // Delete order endpoint
   describe("Order Request: Delete order by ID", () => {
     before(async () => {
-      response = await del(`${host}/api/order/${orderId}`).set(
+      response = await del(`${API_URL}/api/order/${orderId}`).set(
         'User-Agent',
         'agent'
       )
     })
     it("Order Request: The order's being deleted", () => {
-      expect(response.status).to.equal(StatusCodes.OK)
+      expect(response.status).to.equal(StatusCodes.NO_CONTENT)
     })
   })
 })

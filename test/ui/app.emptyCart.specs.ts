@@ -5,15 +5,15 @@ import { HomeNotLoggedPage, CheckoutErrorPage } from '../../src/page'
 const APP_URL = 'http://localhost:8080'
 
 const creditCardInfo = {
-  fName: 'Jesus',
-  Lname: 'Meneses',
-  CN: '1234567812345678',
+  FirstName: 'Jesus',
+  Lastname: 'Meneses',
+  CreditNumber: '1234567812345678',
   CVV: '123',
-  ED: '05/25'
+  ExpireDate: '05/25'
 }
 
 const billingInfo = {
-  Comp: 'Company',
+  Company: 'Company',
   Title: 'Titulo',
   Address: 'Cll 23 #12-43',
   City: 'Medellín'
@@ -43,10 +43,15 @@ describe('Empty shopping cart Process: Pay order with empty shopping cart proces
   describe('Empty shopping cart Process: Checkout interface', () => {
     const checkoutErrorPage: CheckoutErrorPage = new CheckoutErrorPage()
     it('Empty shopping cart Process: Fill credit card and billing information form', async () => {
-      await checkoutErrorPage.fillCreditCardInformation(
-        creditCardInfo,
-        billingInfo
-      )
+      await checkoutErrorPage.fillFirstNameInput(creditCardInfo.FirstName)
+      await checkoutErrorPage.fillLastNameInput(creditCardInfo.Lastname)
+      await checkoutErrorPage.fillCardNumberInput(creditCardInfo.CreditNumber)
+      await checkoutErrorPage.fillCVVInput(creditCardInfo.CVV)
+      await checkoutErrorPage.fillExpireDateInput(creditCardInfo.ExpireDate)
+      await checkoutErrorPage.fillCompanyInput(billingInfo.Company)
+      await checkoutErrorPage.fillTitleInput(billingInfo.Title)
+      await checkoutErrorPage.fillAddressInput(billingInfo.Address)
+      await checkoutErrorPage.fillCityInput(billingInfo.City)
     })
     it('Empty shopping cart Process: Click complete order button', async () => {
       await checkoutErrorPage.clickCompleteOrder()

@@ -1,5 +1,4 @@
 import { $, ElementFinder, browser } from 'protractor'
-
 export default class CheckoutErrorPage {
   private firstNameInput: ElementFinder
   private lastNameInput: ElementFinder
@@ -9,13 +8,13 @@ export default class CheckoutErrorPage {
 
   private companyInput: ElementFinder
   private titleInput: ElementFinder
-  private adressInput: ElementFinder
+  private addressInput: ElementFinder
   private cityInput: ElementFinder
 
   private completeOrderBtn: ElementFinder
   private errorFeedbackText: ElementFinder
 
-  constructor () {
+  constructor() {
     this.firstNameInput = $(
       '#root > div > div > div.panel > div.formSection > div > form > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div > input[type=text]'
     )
@@ -37,7 +36,7 @@ export default class CheckoutErrorPage {
     this.titleInput = $(
       '#root > div > div > div.panel > div.formSection > div > form > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > div > input[type=text]'
     )
-    this.adressInput = $(
+    this.addressInput = $(
       '#root > div > div > div.panel > div.formSection > div > form > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div > input[type=text]'
     )
     this.cityInput = $(
@@ -51,39 +50,66 @@ export default class CheckoutErrorPage {
     )
   }
 
-  public async fillCreditCardInformation (CreditCardInfo, BillinInfo) {
-    // First Name, Last Name, Card Number, CVV, Expiration Date
-    const { fName, Lname, CN, CVV, ED } = CreditCardInfo
-    // Company, Title, Adress, City
-    const { Comp, Title, Address, City } = BillinInfo
-
+  public async fillFirstNameInput(firstName) {
     browser.sleep(3000)
-    await this.firstNameInput.sendKeys(fName)
-    browser.sleep(3000)
-    await this.lastNameInput.sendKeys(Lname)
-    browser.sleep(3000)
-    await this.cardNumberInput.sendKeys(CN)
-    browser.sleep(3000)
-    await this.CVVInput.sendKeys(CVV)
-    browser.sleep(3000)
-    await this.expireDateInput.sendKeys(ED)
-
-    browser.sleep(3000)
-    await this.companyInput.sendKeys(Comp)
-    browser.sleep(3000)
-    await this.titleInput.sendKeys(Title)
-    browser.sleep(3000)
-    await this.adressInput.sendKeys(Address)
-    browser.sleep(3000)
-    await this.cityInput.sendKeys(City)
+    await this.firstNameInput.click();
+    await this.firstNameInput.sendKeys(firstName);
   }
 
-  public async clickCompleteOrder () {
+  public async fillLastNameInput(lastName) {
+    browser.sleep(3000)
+    await this.lastNameInput.click();
+    await this.lastNameInput.sendKeys(lastName);
+  }
+
+  public async fillCardNumberInput(cardNumber) {
+    browser.sleep(3000)
+    await this.cardNumberInput.click();
+    await this.cardNumberInput.sendKeys(cardNumber);
+  }
+
+  public async fillCVVInput(cvv) {
+    browser.sleep(3000)
+    await this.CVVInput.click();
+    await this.CVVInput.sendKeys(cvv);
+  }
+
+  public async fillExpireDateInput(expirationDate) {
+    browser.sleep(3000)
+    await this.expireDateInput.click();
+    await this.expireDateInput.sendKeys(expirationDate);
+  }
+
+  public async fillCompanyInput(company) {
+    browser.sleep(3000)
+    await this.companyInput.click();
+    await this.companyInput.sendKeys(company);
+  }
+
+  public async fillTitleInput(title) {
+    browser.sleep(3000)
+    await this.titleInput.click();
+    await this.titleInput.sendKeys(title);
+  }
+
+  public async fillAddressInput(address) {
+    browser.sleep(3000)
+    await this.addressInput.click();
+    await this.addressInput.sendKeys(address);
+  }
+
+  public async fillCityInput(city) {
+    browser.sleep(3000)
+    await this.cityInput.click();
+    await this.cityInput.sendKeys(city);
+  }
+
+  public async clickCompleteOrder() {
     browser.sleep(3000)
     await this.completeOrderBtn.click()
   }
 
-  public async getFeedbackText () {
+  public async getFeedbackText() {
     browser.sleep(3000)
     return await this.errorFeedbackText.getText()
   }
