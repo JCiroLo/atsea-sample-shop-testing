@@ -4,8 +4,9 @@ export default class CreateUserPage {
   private chooseUserIdInput: ElementFinder
   private choosePasswordInput: ElementFinder
   private signUpBtn: ElementFinder
+  private feedbackRegistryText: ElementFinder
 
-  constructor () {
+  constructor (userExists: Boolean) {
     this.chooseUserIdInput = $(
       'body > div:nth-child(6) > div > div > div > div > form > div:nth-child(1) > div.createFormRow > div:nth-child(1) > div > input[type=text]'
     )
@@ -15,6 +16,11 @@ export default class CreateUserPage {
     this.signUpBtn = $(
       'body > div:nth-child(6) > div > div > div > div > form > div.createFormButton > button'
     )
+    if (userExists) {
+      this.feedbackRegistryText = $(
+        'body > div:nth-child(6) > div > div > div > div > form > div:nth-child(1) > div.createFormRow > div:nth-child(1) > div > div:nth-child(4)'
+      )
+    }
   }
 
   public async fillCreateUserIDForm (userID, password): Promise<void> {
@@ -28,5 +34,10 @@ export default class CreateUserPage {
     browser.sleep(3000)
     await this.signUpBtn.click()
     browser.sleep(3000)
+  }
+
+  public async getFeedbackText () {
+    browser.sleep(3000)
+    return await this.feedbackRegistryText.getText()
   }
 }

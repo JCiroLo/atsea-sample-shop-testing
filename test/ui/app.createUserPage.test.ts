@@ -36,7 +36,7 @@ describe('Test site', () => {
     })
   })
   describe('Create user modal', () => {
-    const createUserPage: CreateUserPage = new CreateUserPage()
+    const createUserPage: CreateUserPage = new CreateUserPage(false)
     it('Fill form', async () => {
       await createUserPage.fillCreateUserIDForm(
         userData.username,
@@ -57,6 +57,28 @@ describe('Test site', () => {
     const homeLoggedPage: HomeLoggedPage = new HomeLoggedPage()
     it('Logout', async () => {
       await homeLoggedPage.clickSignOut()
+    })
+  })
+  describe('Create user', () => {
+    const homeNotLoggedPage: HomeNotLoggedPage = new HomeNotLoggedPage()
+    it('Open modal', async () => {
+      await homeNotLoggedPage.clickCreateUser()
+    })
+  })
+  describe('Create user modal', () => {
+    const createUserPage: CreateUserPage = new CreateUserPage(true)
+    it('Fill form', async () => {
+      await createUserPage.fillCreateUserIDForm(
+        userData.username,
+        userData.password
+      )
+    })
+    it('Create user', async () => {
+      await createUserPage.clickSignUp()
+    })
+    it('Create user', async () => {
+      const feedback = await createUserPage.getFeedbackText()
+      expect(feedback).to.equal('Username already exists')
     })
   })
 })
