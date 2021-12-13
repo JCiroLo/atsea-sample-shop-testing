@@ -1,3 +1,5 @@
+import { uuid } from 'uuidv4'
+
 export const generateRandomID = (): String => {
-  return new Date().getTime().toString()
+  return uuid()
 }

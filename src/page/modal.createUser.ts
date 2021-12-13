@@ -19,9 +19,12 @@ export default class CreateUserPage {
 
   public async fillCreateUserIDForm (userID, password): Promise<void> {
     browser.sleep(3000)
-    await this.chooseUserIdInput.sendKeys(userID)
+    await this.chooseUserIdInput.sendKeys('1')
     browser.sleep(3000)
     await this.choosePasswordInput.sendKeys(password)
+    browser.sleep(3000)
+    await this.chooseUserIdInput.sendKeys(userID)
+
   }
 
   public async clickSignUp () {

@@ -24,7 +24,8 @@
     "@types/chai": "^4.2.15",
     "@types/mocha": "^8.2.1",
     "@types/superagent": "^4.1.10",
-    "mochawesome-screenshots": "^1.7.3"
+    "mochawesome-screenshots": "^1.7.3",
+    "uuidv4": "^6.2.12"
   },
   "devDependencies": {
     "@types/jasminewd2": "^2.0.8",

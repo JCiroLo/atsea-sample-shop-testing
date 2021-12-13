@@ -13,7 +13,7 @@ const APP_URL = 'http://localhost:8080'
 const randomID = generateRandomID()
 const userData = {
   username: randomID,
-  password: randomID
+  password: 'a'
 }
 
 describe('Test site', () => {
@@ -24,7 +24,7 @@ describe('Test site', () => {
     })
 
     it('Title', async () => {
-      await browser.sleep(3000)
+      await browser.sleep(5000)
       const title = await browser.getTitle()
       expect(title).to.equal('Atsea Shop')
     })
