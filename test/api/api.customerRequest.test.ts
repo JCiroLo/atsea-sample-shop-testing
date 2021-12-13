@@ -1,4 +1,4 @@
-import { get, post } from 'superagent'
+import { get, post, put, del } from 'superagent'
 import { StatusCodes } from 'http-status-codes'
 import { expect } from 'chai'
 // import describers from '../describers.json'
@@ -35,6 +35,7 @@ const userToUpdate = {
 let userResponseId = null
 
 describe('User Request: User Request from API', () => {
+  // Create customer Endpoint
   describe('User Request: Register user', () => {
     before(async () => {
       response = await post(`${API_URL}/api/customer/`)
@@ -47,6 +48,7 @@ describe('User Request: User Request from API', () => {
       expect(response.status).to.equal(StatusCodes.CREATED)
     })
   })
+  // Get customer by id endpoint
   describe('User Request: Get customer', () => {
     before(async () => {
       response = await get(`${API_URL}/api/customer/${userResponseId}`).set(
@@ -61,19 +63,34 @@ describe('User Request: User Request from API', () => {
       expect(response.body.customerIf).to.equal(userResponseId) // PUEDE QUE HAYA ERROR
     })
   })
+  // Update customer endpoint
   describe('User Request: Register user with existing email', () => {
     before(async () => {
-      try {
-        response = await post(`${API_URL}/api/customer/${2}`)
-          .set('User-Agent', 'agent')
-          .accept('application/json')
-          .send(user)
-      } catch (e) {
-        response = e
-      }
+      response = await put(`${API_URL}/api/customer/${userResponseId}`)
+        .set('User-Agent', 'agent')
+        .accept('application/json')
+        .send(userToUpdate)
     })
     it("User Request: The customer's not being created", () => {
-      expect(response.status).to.equal(StatusCodes.CONFLICT)
+      expect(response.status).to.equal(StatusCodes.OK)
+    })
+  })
+  // Delete customer ednpoint
+  describe('Deleting a customer', () => {
+    before(async () => {
+      response = await del(`${API_URL}/api/customer/${userResponseId}`)
+    })
+    it('Then an customer should be deleted', () => {
+      expect(response.status).to.equal(StatusCodes.NO_CONTENT)
+    })
+  })
+  // Delete all customers ednpoint
+  describe('Deleting a customer', () => {
+    before(async () => {
+      response = await del(`${API_URL}/api/customer/`)
+    })
+    it('Then an customer should be deleted', () => {
+      expect(response.status).to.equal(StatusCodes.NO_CONTENT)
     })
   })
 })
