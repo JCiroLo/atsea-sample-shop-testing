@@ -6,7 +6,7 @@ const API_URL = 'http://localhost:8080'
 let response = null
 let product = null
 
-describe('Product Request: Atsea Product Request from API', () => {
+describe('Product Request: Product Request from API', () => {
   // Get all products endpoint
   describe('Product Request: Get all products in stock', () => {
     before(async () => {
@@ -18,13 +18,13 @@ describe('Product Request: Atsea Product Request from API', () => {
     })
   })
   // Get product endpoint
-  describe('Get one single product of atsea shop', () => {
+  describe('Product Request: Get product by ID', () => {
     before(async () => {
       response = await get(`${API_URL}/api/product/6`)
       product = response.body
       expect(response.status).to.equal(StatusCodes.OK)
     })
-    it('Then product 6 should be obtained', () => {
+    it("Product Request: The product's being obtained", () => {
       expect(product.productId).to.equal(6)
       expect(product.name).to.equal('Docker Babies')
       expect(product.price).to.equal(25.0)

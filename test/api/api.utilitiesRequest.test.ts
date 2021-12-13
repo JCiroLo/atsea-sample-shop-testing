@@ -5,9 +5,9 @@ import { expect } from 'chai'
 const API_URL = 'http://localhost:8080'
 let response = null
 
-describe('Product Request: Atsea Product Request from API', () => {
+describe('Utilities Request: Utilities Request from API', () => {
   // Login ednpoint
-  describe('Product Request: Get all products in stock', () => {
+  describe('Utilities Request: Login user', () => {
     before(async () => {
       response = await post(`${API_URL}/api/login/`)
         .set('User-Agent', 'agent')
@@ -17,16 +17,16 @@ describe('Product Request: Atsea Product Request from API', () => {
           password: 'test'
         })
     })
-    it('Product Request: The products are being listed', () => {
+    it("Utilities Request: The user's being logged", () => {
       expect(response.status).to.equal(StatusCodes.OK)
     })
   })
   // DB health checker endpoint
-  describe('Checking the database health', () => {
+  describe('Utilities Request: Get data base health info', () => {
     before(async () => {
       response = await get(`${API_URL}/utility/healthcheck/`)
     })
-    it('Then the database health should be checked', () => {
+    it('Utilities Request: The database health is beign checked', () => {
       expect(response.status).to.equal(StatusCodes.OK)
     })
   })

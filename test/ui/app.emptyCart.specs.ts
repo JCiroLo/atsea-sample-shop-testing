@@ -19,39 +19,39 @@ const billingInfo = {
   City: 'Medellín'
 }
 
-describe('Test site', () => {
-  describe('Enter website', () => {
+describe('Empty shopping cart Process: Pay order with empty shopping cart process', () => {
+  describe('Empty shopping cart Process: Enter website', () => {
     beforeEach(async () => {
       await browser.get(APP_URL)
       await browser.sleep(3000)
     })
 
-    it('Title', async () => {
+    it('Empty shopping cart Process: The website title is beign checked', async () => {
       await browser.sleep(3000)
       const title = await browser.getTitle()
       expect(title).to.equal('Atsea Shop')
     })
   })
 
-  describe('Create user', () => {
+  describe('Empty shopping cart Process: Home interface', () => {
     const homeNotLoggedPage: HomeNotLoggedPage = new HomeNotLoggedPage()
-    it('Open checkout page', async () => {
+    it('Empty shopping cart Process: Open checkout inerface', async () => {
       await homeNotLoggedPage.clickCheckout()
     })
   })
 
-  describe('Create user modal', () => {
+  describe('Empty shopping cart Process: Checkout interface', () => {
     const checkoutErrorPage: CheckoutErrorPage = new CheckoutErrorPage()
-    it('Fill form', async () => {
+    it('Empty shopping cart Process: Fill credit card and billing information form', async () => {
       await checkoutErrorPage.fillCreditCardInformation(
         creditCardInfo,
         billingInfo
       )
     })
-    it('Create user', async () => {
+    it('Empty shopping cart Process: Click complete order button', async () => {
       await checkoutErrorPage.clickCompleteOrder()
     })
-    it('Create user', async () => {
+    it('Empty shopping cart Process: Validate if shopping card is empty', async () => {
       const feedback = await checkoutErrorPage.getFeedbackText()
       expect(feedback).to.equal('Please add to cart first...')
     })

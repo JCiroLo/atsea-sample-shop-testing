@@ -40,10 +40,10 @@ let order = {
   productsOrdered: { 1: 1, 2: 2, 3: 3 }
 }
 
-describe('Atsea Order Request API Test', () => {
+describe('Order Request: Order Request from API', () => {
   let orderId = null
   // Create order endpoint
-  describe('Creating an order', () => {
+  describe('Order Request: Create order', () => {
     before(async () => {
       response = await post(`${host}/api/order/`)
         .set('User-Agent', 'agent')
@@ -52,27 +52,27 @@ describe('Atsea Order Request API Test', () => {
       orderId = response.body.orderId
       order.orderId = orderId
     })
-    it('Then an order should be placed', () => {
+    it("Order Request: The order's being created", () => {
       expect(response.status).to.equal(StatusCodes.CREATED)
     })
   })
   // Get all orders endpoint
-  describe('Getting an order from the orderId', () => {
+  describe('Order Request: Get all orders', () => {
     before(async () => {
       response = await get(`${host}/api/order/`).set('User-Agent', 'agent')
     })
-    it('Then an order should be obtained', () => {
+    it('Order Request: All the orders are being obtained', () => {
       expect(response.status).to.equal(StatusCodes.OK)
     })
   })
   // Get order by id endpoint
-  describe('Getting an order from the orderId', () => {
+  describe('Order Request: Get order by ID', () => {
     before(async () => {
       response = await get(`${host}/api/order/${orderId}`)
         .set('User-Agent', 'agent')
         .accept('application/json')
     })
-    it('Then an order should be obtained', () => {
+    it("Order Request: The order's being obtained", () => {
       expect(response.status).to.equal(StatusCodes.OK)
       expect(response.body.orderId).to.equal(order.orderId)
       expect(response.body).to.have.deep.property(
@@ -82,7 +82,7 @@ describe('Atsea Order Request API Test', () => {
     })
   })
   // Update order endpoint
-  describe('Getting an order from the orderId', () => {
+  describe("Order Request: Update order", () => {
     before(async () => {
       response = await post(`${host}/api/order/${orderId}`)
         .set('User-Agent', 'agent')
@@ -94,19 +94,19 @@ describe('Atsea Order Request API Test', () => {
           customerId
         })
     })
-    it('Then an order should be obtained', () => {
+    it("Order Request: The order's being updated", () => {
       expect(response.status).to.equal(StatusCodes.OK)
     })
   })
   // Delete order endpoint
-  describe('Getting an order from the orderId', () => {
+  describe("Order Request: Delete order by ID", () => {
     before(async () => {
       response = await del(`${host}/api/order/${orderId}`).set(
         'User-Agent',
         'agent'
       )
     })
-    it('Then an order should be obtained', () => {
+    it("Order Request: The order's being deleted", () => {
       expect(response.status).to.equal(StatusCodes.OK)
     })
   })

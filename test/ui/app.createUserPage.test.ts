@@ -16,67 +16,67 @@ const userData = {
   password: 'a'
 }
 
-describe('Test site', () => {
-  describe('Enter website', () => {
+describe('Create User Process: Create existing user process', () => {
+  describe('Create User Process: Enter website', () => {
     beforeEach(async () => {
       await browser.get(APP_URL)
       await browser.sleep(3000)
     })
 
-    it('Title', async () => {
+    it('Create User Process: The website title is beign checked', async () => {
       await browser.sleep(5000)
       const title = await browser.getTitle()
       expect(title).to.equal('Atsea Shop')
     })
   })
-  describe('Create user', () => {
+  describe('Create User Process: Home interface', () => {
     const homeNotLoggedPage: HomeNotLoggedPage = new HomeNotLoggedPage()
-    it('Open modal', async () => {
+    it('Create User Process: Open create user modal', async () => {
       await homeNotLoggedPage.clickCreateUser()
     })
   })
-  describe('Create user modal', () => {
+  describe('Create User Process: Create user modal interface', () => {
     const createUserPage: CreateUserPage = new CreateUserPage(false)
-    it('Fill form', async () => {
+    it('Create User Process: Fill create user form', async () => {
       await createUserPage.fillCreateUserIDForm(
         userData.username,
         userData.password
       )
     })
-    it('Create user', async () => {
+    it('Create User Process: Click create user button', async () => {
       await createUserPage.clickSignUp()
     })
   })
-  describe('Success create user modal', () => {
+  describe('Create User Process: Create user modal success interface', () => {
     const createUserSuccessPage: CreateUserSuccessPage = new CreateUserSuccessPage()
-    it('Close modal', async () => {
+    it('Create User Process: Close create user modal', async () => {
       await createUserSuccessPage.clickContineShopping()
     })
   })
-  describe('Home with user', () => {
+  describe('Create User Process: Home interface with auth session', () => {
     const homeLoggedPage: HomeLoggedPage = new HomeLoggedPage()
-    it('Logout', async () => {
+    it('Create User Process: Logout session', async () => {
       await homeLoggedPage.clickSignOut()
     })
   })
-  describe('Create user', () => {
+  describe('Create User Process: Home interface without session', () => {
     const homeNotLoggedPage: HomeNotLoggedPage = new HomeNotLoggedPage()
-    it('Open modal', async () => {
+    it('Create User Process: Open create user modal', async () => {
       await homeNotLoggedPage.clickCreateUser()
     })
   })
-  describe('Create user modal', () => {
+  describe('Create User Process: Create user modal interface', () => {
     const createUserPage: CreateUserPage = new CreateUserPage(true)
-    it('Fill form', async () => {
+    it('Create User Process: Fill create user form', async () => {
       await createUserPage.fillCreateUserIDForm(
         userData.username,
         userData.password
       )
     })
-    it('Create user', async () => {
+    it('Create User Process: Click create user button', async () => {
       await createUserPage.clickSignUp()
     })
-    it('Create user', async () => {
+    it('Create User Process: Validate if user already exists', async () => {
       const feedback = await createUserPage.getFeedbackText()
       expect(feedback).to.equal('Username already exists')
     })

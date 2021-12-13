@@ -34,7 +34,7 @@ const userToUpdate = {
 
 let userResponseId = null
 
-describe('User Request: User Request from API', () => {
+describe('User Request: Customer Request from API', () => {
   // Create customer Endpoint
   describe('User Request: Register user', () => {
     before(async () => {
@@ -76,20 +76,20 @@ describe('User Request: User Request from API', () => {
     })
   })
   // Delete customer ednpoint
-  describe('Deleting a customer', () => {
+  describe('User Request: Delete a customer', () => {
     before(async () => {
       response = await del(`${API_URL}/api/customer/${userResponseId}`)
     })
-    it('Then an customer should be deleted', () => {
+    it("User Request: The customer's being deleted", () => {
       expect(response.status).to.equal(StatusCodes.NO_CONTENT)
     })
   })
   // Delete all customers ednpoint
-  describe('Deleting a customer', () => {
+  describe('User Request: Delete all customers', () => {
     before(async () => {
       response = await del(`${API_URL}/api/customer/`)
     })
-    it('Then an customer should be deleted', () => {
+    it('User Request: All the customer are being deleted', () => {
       expect(response.status).to.equal(StatusCodes.NO_CONTENT)
     })
   })
