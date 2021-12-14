@@ -20,11 +20,11 @@ describe('Create User Process: Create existing user process', () => {
   describe('Create User Process: Enter website', () => {
     beforeEach(async () => {
       await browser.get(APP_URL)
-      await browser.sleep(3000)
+      await browser.sleep(10000)
     })
 
     it('Create User Process: The website title is beign checked', async () => {
-      await browser.sleep(5000)
+      await browser.sleep(10000)
       const title = await browser.getTitle()
       expect(title).to.equal('Atsea Shop Test 5')
     })

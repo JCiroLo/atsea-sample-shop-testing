@@ -1,8 +1,8 @@
-// import { browser } from 'protractor'
+import { browser } from 'protractor'
 import { expect } from 'chai'
 import { HomeNotLoggedPage, CheckoutErrorPage } from '../../src/page'
 
-// const APP_URL = 'http://3.15.27.119:8080'
+const APP_URL = 'http://3.15.27.119:8080'
 
 const creditCardInfo = {
   FirstName: 'Jesus',
@@ -20,6 +20,18 @@ const billingInfo = {
 }
 
 describe('Empty shopping cart Process: Pay order with empty shopping cart process', () => {
+  describe('Empty shopping cart Process: Enter website', () => {
+    beforeEach(async () => {
+      await browser.get(APP_URL)
+      await browser.sleep(10000)
+    })
+
+    it('Empty shopping cart Process: The website title is beign checked', async () => {
+      await browser.sleep(10000)
+      const title = await browser.getTitle()
+      expect(title).to.equal('Atsea Shop Test 5')
+    })
+  })
   describe('Empty shopping cart Process: Home interface', () => {
     const homeNotLoggedPage: HomeNotLoggedPage = new HomeNotLoggedPage()
     it('Empty shopping cart Process: Open checkout inerface', async () => {
