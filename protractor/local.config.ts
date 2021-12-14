@@ -2,7 +2,7 @@ import { browser, Config } from 'protractor'
 const firefoxConfig = {
   browserName: 'firefox',
   firefoxOptions: {
-    args: ['--window-size=1920,1080']
+    args: ['--headless', '--disable-gpu']
   },
   name: 'firefox-tests',
   shardTestFiles: true,
@@ -12,7 +12,7 @@ const firefoxConfig = {
 const chromeConfig = {
   browserName: 'chrome',
   chromeOptions: {
-    args: ['--window-size=1920,1080']
+    args: ['--headless', '--disable-gpu']
   },
   name: 'chrome-tests',
   shardTestFiles: true,
@@ -35,6 +35,6 @@ export const config: Config = {
   },
   getPageTimeout: 30000,
   onPrepare: () => {
-    browser.ignoreSynchronization = true;
+    browser.ignoreSynchronization = true
   }
 }
