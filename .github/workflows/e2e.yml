@@ -64,8 +64,8 @@ jobs:
       run: docker-compose up -d
     - name: manager 
       run: npx webdriver-manager update
-#    - name: Running UI tests
-#      run: npm run test:ui
-#    - name: Upload reports to AWS bucket
-#      run: aws s3 sync ./mochawesome-reports ${{ secrets.AWS_BUCKET }}/ui-tests-report
-#      if: ${{ always() }}
+    - name: Running UI tests
+      run: npm run test:ui
+    - name: Upload reports to AWS bucket
+      run: aws s3 sync ./mochawesome-reports ${{ secrets.AWS_BUCKET }}/ui-tests-report
+      if: ${{ always() }}
