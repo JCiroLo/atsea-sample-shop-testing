@@ -1,8 +1,8 @@
 import { get } from 'superagent'
 import { StatusCodes } from 'http-status-codes'
 import { expect } from 'chai'
+import { API_URL } from '../utils/CONST'
 
-const API_URL = 'http://localhost:8080'
 let response = null
 
 describe('Utilities Request: Utilities Request from API', () => {

@@ -1,8 +1,9 @@
 import { browser } from 'protractor'
 import { expect } from 'chai'
 import { HomeNotLoggedPage, CheckoutErrorPage } from '../../src/page'
+import { API_URL } from '../utils/CONST'
 
-const APP_URL = 'http://localhost:8080'
+const APP_URL = API_URL
 
 const creditCardInfo = {
   FirstName: 'Jesus',
