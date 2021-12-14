@@ -26,7 +26,7 @@ describe('Create User Process: Create existing user process', () => {
     it('Create User Process: The website title is beign checked', async () => {
       await browser.sleep(5000)
       const title = await browser.getTitle()
-      expect(title).to.equal('Atsea Shop')
+      expect(title).to.equal('Atsea Shop Test 5')
     })
   })
   describe('Create User Process: Home interface', () => {
