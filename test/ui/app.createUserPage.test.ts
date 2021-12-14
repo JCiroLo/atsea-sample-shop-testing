@@ -1,3 +1,4 @@
+import { browser } from 'protractor'
 import { expect } from 'chai'
 import {
   HomeNotLoggedPage,
@@ -7,6 +8,8 @@ import {
 } from '../../src/page'
 import { generateRandomID } from '../utils/utils'
 
+const APP_URL = 'http://3.15.27.119:8080'
+
 const randomID = generateRandomID()
 const userData = {
   username: randomID,
@@ -14,6 +17,18 @@ const userData = {
 }
 
 describe('Create User Process: Create existing user process', () => {
+  describe('Create User Process: Enter website', () => {
+    beforeEach(async () => {
+      await browser.get(APP_URL)
+      await browser.sleep(3000)
+    })
+
+    it('Create User Process: The website title is beign checked', async () => {
+      await browser.sleep(5000)
+      const title = await browser.getTitle()
+      expect(title).to.equal('Atsea Shop Test 5')
+    })
+  })
   describe('Create User Process: Home interface', () => {
     const homeNotLoggedPage: HomeNotLoggedPage = new HomeNotLoggedPage()
     it('Create User Process: Open create user modal', async () => {
