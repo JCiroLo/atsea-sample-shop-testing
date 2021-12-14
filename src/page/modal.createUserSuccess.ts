@@ -10,8 +10,8 @@ export default class CreateUserSuccessPage {
   }
 
   public async clickContineShopping () {
-    browser.sleep(50000)
+    browser.sleep(10000)
     await this.continueShoppingBtn.click()
-    browser.sleep(50000)
+    browser.sleep(10000)
   }
 }

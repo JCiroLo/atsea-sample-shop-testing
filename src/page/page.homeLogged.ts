@@ -9,7 +9,7 @@ export default class HomeLoggedPage {
     )
   }
   public async clickSignOut () {
-    browser.sleep(50000)
+    browser.sleep(10000)
     await this.signOutBtn.click()
   }
 }

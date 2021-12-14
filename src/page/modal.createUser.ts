@@ -24,23 +24,23 @@ export default class CreateUserPage {
   }
 
   public async fillCreateUserIDForm (userID, password): Promise<void> {
-    browser.sleep(50000)
+    browser.sleep(10000)
     await this.chooseUserIdInput.sendKeys('1')
-    browser.sleep(50000)
+    browser.sleep(10000)
     await this.choosePasswordInput.sendKeys(password)
-    browser.sleep(50000)
+    browser.sleep(10000)
     await this.chooseUserIdInput.sendKeys(userID)
 
   }
 
   public async clickSignUp () {
-    browser.sleep(50000)
+    browser.sleep(10000)
     await this.signUpBtn.click()
-    browser.sleep(50000)
+    browser.sleep(10000)
   }
 
   public async getFeedbackText () {
-    browser.sleep(50000)
+    browser.sleep(10000)
     return await this.feedbackRegistryText.getText()
   }
 }

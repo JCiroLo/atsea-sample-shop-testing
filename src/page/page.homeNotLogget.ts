@@ -13,14 +13,14 @@ export default class HomeNotLoggedPage {
     )
   }
   public async clickCreateUser () {
-    browser.sleep(50000)
+    browser.sleep(10000)
     await this.createUserBtn.click()
-    browser.sleep(50000)
+    browser.sleep(10000)
   }
 
   public async clickCheckout () {
-    browser.sleep(50000)
+    browser.sleep(10000)
     await this.checkoutBtn.click()
-    browser.sleep(50000)
+    browser.sleep(10000)
   }
 }
