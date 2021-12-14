@@ -8,9 +8,7 @@ import {
 } from '../../src/page'
 import { generateRandomID } from '../utils/utils'
 
-import { API_URL } from '../utils/CONST'
-
-const APP_URL = API_URL
+const APP_URL = 'http://3.15.27.119:8080'
 
 const randomID = generateRandomID()
 const userData = {

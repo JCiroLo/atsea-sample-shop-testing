@@ -1,7 +1,7 @@
 import { get } from 'superagent'
 import { StatusCodes } from 'http-status-codes'
 import { expect } from 'chai'
-import { API_URL } from '../utils/CONST'
+export const API_URL = 'http://3.15.27.119:8080'
 
 let response = null
 let product = null
