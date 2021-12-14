@@ -2,7 +2,7 @@ import { browser, Config } from 'protractor'
 const firefoxConfig = {
   browserName: 'firefox',
   firefoxOptions: {
-    args: ['--headless', '--disable-gpu']
+    args: ['--headless', '--window-size=1920,1080']
   },
   name: 'firefox-tests',
   shardTestFiles: true,
@@ -12,7 +12,7 @@ const firefoxConfig = {
 const chromeConfig = {
   browserName: 'chrome',
   chromeOptions: {
-    args: ['--headless', '--disable-gpu']
+    args: ['--headless', '--window-size=1920,1080']
   },
   name: 'chrome-tests',
   shardTestFiles: true,
@@ -23,7 +23,7 @@ export const config: Config = {
   multiCapabilities,
   framework: 'mocha',
   specs: ['../test/ui/*js'],
-  seleniumAddress: 'http://0.0.0.0:4444',
+  // seleniumAddress: 'http://0.0.0.0:4444',
   SELENIUM_PROMISE_MANAGER: false,
   mochaOpts: {
     timeout: 18000,
