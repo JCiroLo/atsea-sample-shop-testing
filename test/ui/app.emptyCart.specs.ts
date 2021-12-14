@@ -20,19 +20,6 @@ const billingInfo = {
 }
 
 describe('Empty shopping cart Process: Pay order with empty shopping cart process', () => {
-  /*
-  describe('Empty shopping cart Process: Enter website', () => {
-     beforeEach(async () => {
-      await browser.get(APP_URL)
-      await browser.sleep(3000)
-    })
-
-    it('Empty shopping cart Process: The website title is beign checked', async () => {
-      await browser.sleep(3000)
-      const title = await browser.getTitle()
-      expect(title).to.equal('Atsea Shop Test 5')
-    })
-  }) */
   describe('Empty shopping cart Process: Home interface', () => {
     const homeNotLoggedPage: HomeNotLoggedPage = new HomeNotLoggedPage()
     it('Empty shopping cart Process: Open checkout inerface', async () => {
