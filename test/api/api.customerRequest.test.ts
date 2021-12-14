@@ -2,7 +2,6 @@ import { get, post, put, del } from 'superagent'
 import { StatusCodes } from 'http-status-codes'
 import { expect } from 'chai'
 import { API_URL } from '../utils/CONST'
-// import describers from '../describers.json'
 
 let response = null
 
