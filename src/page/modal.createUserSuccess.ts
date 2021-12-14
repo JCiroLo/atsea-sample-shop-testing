@@ -5,7 +5,7 @@ export default class CreateUserSuccessPage {
 
   constructor () {
     this.continueShoppingBtn = $(
-      'body > div:nth-child(6) > div > div > div > div > div.successButton > button'
+      '.successButton > button'
     )
   }
 
