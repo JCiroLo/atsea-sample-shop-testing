@@ -2,7 +2,7 @@ import { browser, Config } from 'protractor'
 const firefoxConfig = {
   browserName: 'firefox',
   firefoxOptions: {
-    args: ['--window-size=1920,1080']
+    args: ['--headless', '--window-size=1920,1080']
   },
   name: 'firefox-tests',
   shardTestFiles: true,
@@ -12,7 +12,7 @@ const firefoxConfig = {
 const chromeConfig = {
   browserName: 'chrome',
   chromeOptions: {
-    args: ['--window-size=1920,1080']
+    args: ['--headless', '--window-size=1920,1080']
   },
   name: 'chrome-tests',
   shardTestFiles: true,

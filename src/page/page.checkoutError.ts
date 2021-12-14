@@ -51,66 +51,66 @@ export default class CheckoutErrorPage {
   }
 
   public async fillFirstNameInput(firstName) {
-    browser.sleep(3000)
+    browser.sleep(50000)
     await this.firstNameInput.click();
     await this.firstNameInput.sendKeys(firstName);
   }
 
   public async fillLastNameInput(lastName) {
-    browser.sleep(3000)
+    browser.sleep(50000)
     await this.lastNameInput.click();
     await this.lastNameInput.sendKeys(lastName);
   }
 
   public async fillCardNumberInput(cardNumber) {
-    browser.sleep(3000)
+    browser.sleep(50000)
     await this.cardNumberInput.click();
     await this.cardNumberInput.sendKeys(cardNumber);
   }
 
   public async fillCVVInput(cvv) {
-    browser.sleep(3000)
+    browser.sleep(50000)
     await this.CVVInput.click();
     await this.CVVInput.sendKeys(cvv);
   }
 
   public async fillExpireDateInput(expirationDate) {
-    browser.sleep(3000)
+    browser.sleep(50000)
     await this.expireDateInput.click();
     await this.expireDateInput.sendKeys(expirationDate);
   }
 
   public async fillCompanyInput(company) {
-    browser.sleep(3000)
+    browser.sleep(50000)
     await this.companyInput.click();
     await this.companyInput.sendKeys(company);
   }
 
   public async fillTitleInput(title) {
-    browser.sleep(3000)
+    browser.sleep(50000)
     await this.titleInput.click();
     await this.titleInput.sendKeys(title);
   }
 
   public async fillAddressInput(address) {
-    browser.sleep(3000)
+    browser.sleep(50000)
     await this.addressInput.click();
     await this.addressInput.sendKeys(address);
   }
 
   public async fillCityInput(city) {
-    browser.sleep(3000)
+    browser.sleep(50000)
     await this.cityInput.click();
     await this.cityInput.sendKeys(city);
   }
 
   public async clickCompleteOrder() {
-    browser.sleep(3000)
+    browser.sleep(50000)
     await this.completeOrderBtn.click()
   }
 
   public async getFeedbackText() {
-    browser.sleep(3000)
+    browser.sleep(50000)
     return await this.errorFeedbackText.getText()
   }
 }
